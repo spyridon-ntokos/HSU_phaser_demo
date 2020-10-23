@@ -5,24 +5,38 @@ HSUGame.Game = function(){};
 
 HSUGame.Game.prototype = {
     create: function() {
-        this.map = this.game.add.tilemap('hsu_map');
+        this.map = this.game.add.tilemap('map1');
 
         // the first parameter is the tileset name specified in Tiled, the second is the key to the asset
         this.map.addTilesetImage('tds_tilesheet', 'gameTiles');
+        this.map.addTilesetImage('city_tileset', 'cityTiles');
 
         // create layer
         this.groundlayer = this.map.createLayer('Ground');
-        this.floor_doorlayer = this.map.createLayer('Floor & Doors');
         this.buildinglayer = this.map.createLayer('Buildings');
+        this.floor_doorlayer = this.map.createLayer('Stairs & Doors');
+        this.interiorlayer = this.map.createLayer('Interior');
+        
 
         // collision tiles in building layer
-        this.map.setCollisionBetween(279, 287, true, 'Buildings');
-        this.map.setCollisionBetween(306, 314, true, 'Buildings');
-        this.map.setCollisionBetween(333, 341, true, 'Buildings');
-        this.map.setCollisionBetween(360, 368, true, 'Buildings');
+        this.map.setCollisionBetween(0, 9999, true, 'Buildings');
 
         // resizes the game world to match the layer dimensions
         this.groundlayer.resizeWorld();
+
+        // load whole map to screen (doesn't work that well yet)
+        /*this.game.width = window.innerWidth;
+        this.game.height = window.innerHeight;
+        this.game.stage.width = window.innerWidth;
+        this.game.stage.height = window.innerHeight;
+        if (this.game.renderType === Phaser.WEBGL) {
+            this.game.renderer.resize(window.innerWidth, window.innerHeight);
+        }
+        this.game.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
+        this.game.camera.setSize(window.innerWidth, window.innerHeight);
+        this.game.camera.setBoundsToWorld();
+        this.game.scale.setShowAll();
+        this.game.scale.refresh();*/
 
         var objects = new Array();
         // Loop over each object layer
@@ -50,6 +64,7 @@ HSUGame.Game.prototype = {
 
         // the camera will follow the player in the world
         this.game.camera.follow(this.player);
+        this.game.scale.setGameSize(window.innerWidth, window.innerHeight);
 
         // move player with cursor keys
         this.cursors = this.game.input.keyboard.createCursorKeys();

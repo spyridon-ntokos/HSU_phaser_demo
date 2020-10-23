@@ -12,8 +12,9 @@ HSUGame.Preload.prototype = {
         this.load.setPreloadSprite(this.preloadBar);
 
         //load game assets
-        this.load.tilemap('hsu_map', 'assets/maps/hsu_map.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('gameTiles', 'assets/images/tilesheet_complete.png')
+        this.load.tilemap('map1', 'assets/maps/hsu_map.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.image('gameTiles', 'assets/images/tds_16.png');
+        this.load.image('cityTiles', 'assets/images/city_tileset.png');
         this.load.image('player', 'assets/images/manBrown_stand.png');
         this.load.image('NPC_icon', 'assets/images/zombie1_stand.png');
 
