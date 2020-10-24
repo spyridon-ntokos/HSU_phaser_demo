@@ -46,7 +46,8 @@ var GameScene = new Phaser.Class({
 			if (object.type === 'Spawn') {
 				// Player starting point
 				if (object.name === 'StartingPoint') {
-					this.player = this.physics.add.image(object.x, object.x, 'player');
+					this.player = this.physics.add.sprite(object.x, object.x, 'char_batch1', 1).setScale(0.027);
+					// original size 512x512, scaled size ~14x14
 				}
 			}
 

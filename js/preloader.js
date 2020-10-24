@@ -63,7 +63,15 @@ var Preloader = new Phaser.Class({
 		this.load.tilemapTiledJSON('map1', 'assets/maps/hsu_map.json');
 		this.load.image('gameTiles', 'assets/images/tds_16_extruded.png');
 		this.load.image('cityTiles', 'assets/images/city_tileset_extruded.png');
-		this.load.image('player', 'assets/images/manBrown_stand.png');
+
+		this.load.spritesheet('char_batch1', 'assets/images/charBatch1_sprite.png', {
+			frameWidth: 512,
+			frameHeight: 512,
+			startFrame: 1,
+			endFrame: 14
+		});
+
+		this.load.image('player', 'assets/images/custom_player.png');
 		this.load.image('NPC_icon', 'assets/images/zombie1_stand.png');
 		this.load.image('play_btn', 'assets/images/PlayButton.png');
 		this.load.image('play_btn_hl', 'assets/images/PlayButtonHighlight.png');
